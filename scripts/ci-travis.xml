@@ -96,16 +96,8 @@ xmlns:git="antlib:com.rimerosolutions.ant.git">
   </target>
 
   <!--<target name="dist-rc-git" depends="travis.classpath,init.travis.submodule,build.git,dist-rc" description="generating dist and test" >-->
-  <target name="dist-rc-git" > <!-- depends="travis.classpath,init.travis.submodule,build.git,dist-rc" description="generating dist and test" > -->
-    <echo>We are in the beginning of dist-rc-git</echo>
-      <sequential>
-        <antcall target="init.travis.submodule"/>
-        <antcall target="travis.classpath"/>
-        <antcall target="build.git"/>
-        <antcall target="dist-rc"/>
-      </sequential>
-    <echo>We are in the end of dist-rc-git</echo>
-      
+  <target name="dist-rc-git" depends="init.travis.submodule,travis.classpath,build.git,dist-rc">
+    <echo>We are in dist-rc-git</echo>
   </target>
 
   <macrodef name="make-github">
