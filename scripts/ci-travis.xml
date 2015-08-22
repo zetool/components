@@ -9,11 +9,13 @@ xmlns:git="antlib:com.rimerosolutions.ant.git">
   <property name="travis.ivy.lib.dir" location="../../lib/"/>
   <property name="travis.ivy.jar.dir" location="${travis.ivy.lib.dir}/dist/ivy/"/> 
 
-  <target name="init.travis.submodule">
+  <target name="init.travis.submodule" depends="travis.classpath">
+    <echo>We are in the beginning of init travis submodule</echo>
     <!-- Common direcotry for libraries and ivy libs for subtasks. -->
     <property name="ivy.jar.dir" location="${travis.ivy.jar.dir}"/>
     <property name="ivy.lib.dir" location="${travis.ivy.lib.dir}"/>
     <property name="core.lib.dir" value="${travis.ivy.lib.dir}/core"/>
+    <echo>We are in the end of init travis submodule</echo>
   </target>
 
   <target name="init.travis">
@@ -23,7 +25,9 @@ xmlns:git="antlib:com.rimerosolutions.ant.git">
   </target>
 
   <target name="travis.classpath" depends="init-ant-contrib">
+    <echo>We are in the beginning of travis.classpath</echo>
     <concatenate-manual-dependencies lineparam="${manual.dependencies}"/>
+    <echo>We are in the end of travis.classpath</echo>
   </target>
 
   <target name="test.travis" depends="init.travis,build.submodules,travis.classpath,build,test">
@@ -91,7 +95,16 @@ xmlns:git="antlib:com.rimerosolutions.ant.git">
     <concatenate-dependencies lineparam="${dependencies}" base="../../lib/"/>
   </target>
 
-  <target name="dist-rc-git" depends="init.travis.submodule,build.git,dist-rc" description="generating dist and test" >
+  <!--<target name="dist-rc-git" depends="travis.classpath,init.travis.submodule,build.git,dist-rc" description="generating dist and test" >-->
+  <target name="dist-rc-git" > <!-- depends="travis.classpath,init.travis.submodule,build.git,dist-rc" description="generating dist and test" > -->
+    <echo>We are in the beginning of dist-rc-git</echo>
+      <sequential>
+        <antcall target="init.travis.submodule"/>
+        <antcall target="build.git"/>
+        <antcall target="dist-rc"/>
+      </sequential>
+    <echo>We are in the end of dist-rc-git</echo>
+      
   </target>
 
   <macrodef name="make-github">
