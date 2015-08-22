@@ -9,7 +9,7 @@ xmlns:git="antlib:com.rimerosolutions.ant.git">
   <property name="travis.ivy.lib.dir" location="../../lib/"/>
   <property name="travis.ivy.jar.dir" location="${travis.ivy.lib.dir}/dist/ivy/"/> 
 
-  <target name="init.travis.submodule" depends="travis.classpath">
+  <target name="init.travis.submodule">
     <echo>We are in the beginning of init travis submodule</echo>
     <!-- Common direcotry for libraries and ivy libs for subtasks. -->
     <property name="ivy.jar.dir" location="${travis.ivy.jar.dir}"/>
@@ -100,6 +100,7 @@ xmlns:git="antlib:com.rimerosolutions.ant.git">
     <echo>We are in the beginning of dist-rc-git</echo>
       <sequential>
         <antcall target="init.travis.submodule"/>
+        <antcall target="travis.classpath"/>
         <antcall target="build.git"/>
         <antcall target="dist-rc"/>
       </sequential>
