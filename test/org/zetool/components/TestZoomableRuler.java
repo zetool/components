@@ -20,23 +20,30 @@ import javax.swing.event.ChangeEvent;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.number.IsCloseTo.closeTo;
 import static org.junit.Assert.assertThat;
+import org.junit.Before;
 import org.junit.Test;
+import org.zetool.components.JRuler.RulerDisplayUnit;
+import org.zetool.components.JRuler.RulerOrientation;
 
 /**
  * Tests propagation of zoom factor to {@link JZoomableRuler} by listeners.
  * @author Jan-Philipp Kappmeier
  */
 public class TestZoomableRuler {
+    private JZoomableRuler ruler;
+    
+    @Before
+    public void setup() {
+        ruler = new JZoomableRuler(RulerOrientation.HORIZONTAL, RulerDisplayUnit.CENTIMETER);
+    }
     
     @Test
     public void testInitializesCorrectly() {
-        JZoomableRuler ruler = new JZoomableRuler(JRuler.RulerOrientation.Horizontal, JRuler.RulerDisplayUnits.Centimeter);
         assertThat(ruler.getZoomFactor(), is(closeTo(1.0, 10e-8)));
     }
     
     @Test
     public void testZoomFactorListener() {
-        JZoomableRuler ruler = new JZoomableRuler(JRuler.RulerOrientation.Horizontal, JRuler.RulerDisplayUnits.Centimeter);
         JSlider slider = new JSlider(1, 200);
 
         slider.addChangeListener(ruler);
@@ -54,7 +61,6 @@ public class TestZoomableRuler {
     
     @Test
     public void testIgnoresOtherListener() {
-        JZoomableRuler ruler = new JZoomableRuler(JRuler.RulerOrientation.Horizontal, JRuler.RulerDisplayUnits.Inch);
         ruler.setZoomFactor(0.2);
 
         ruler.stateChanged(new ChangeEvent(new Object()));
@@ -66,7 +72,6 @@ public class TestZoomableRuler {
     
     @Test
     public void testIgnoresDuringChange() {
-        JZoomableRuler ruler = new JZoomableRuler(JRuler.RulerOrientation.Horizontal, JRuler.RulerDisplayUnits.Centimeter);
         JSlider slider = new JSlider(1, 100);
         slider.addChangeListener(ruler);
         slider.setValueIsAdjusting(true);

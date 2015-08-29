@@ -34,26 +34,26 @@ public class JRuler extends JComponent {
      * An enumeration containing several units to measure distance. All units are provided with a scale factor to the
      * base unit 1 meter and a short text as abbreviation (e. g. m for meter).
      */
-    public enum RulerDisplayUnits {
+    public enum RulerDisplayUnit {
 
         /** Micrometers. */
-        Micrometer(0.0001, "my"),
+        MICROMETER(0.0001, "my"),
         /** Millimeters. */
-        Millimeter(0.001, "mm"),
+        MILLIMETER(0.001, "mm"),
         /** Centimeters. */
-        Centimeter(0.01, "cm"),
+        CENTIMETER(0.01, "cm"),
         /** Two centimeters. */
-        TwoCentimeter(0.02, "2cm"),
+        TWO_CENTIMETER(0.02, "2cm"),
         /** Decimeters. */
-        Decimeter(0.1, "dm"),
+        DECIMETER(0.1, "dm"),
         /** Meters. */
-        Meter(1.0, "m"),
+        METER(1.0, "m"),
         /** Inches. */
-        Inch(0.0254, "in"),
+        INCH(0.0254, "in"),
         /** Feet. */
-        Foot(0.3048, "ft"),
+        FOOT(0.3048, "ft"),
         /** Yards. */
-        Yard(0.9144, "yd");
+        YARD(0.9144, "yd");
         /** The scaling value for the selected unit. */
         private final double unit;
         /** The short text for the selected unit. */
@@ -65,7 +65,7 @@ public class JRuler extends JComponent {
          * @param unit the scaling factor for the unit
          * @param text the short text for the unit
          */
-        RulerDisplayUnits(double unit, String text) {
+        RulerDisplayUnit(double unit, String text) {
             this.unit = unit;
             this.text = text;
         }
@@ -93,12 +93,12 @@ public class JRuler extends JComponent {
      */
     public enum RulerOrientation {
         /** The ruler is horizontally drawn. */
-        Horizontal,
+        HORIZONTAL,
         /** The ruler is vertically drawn. */
-        Vertical;
+        VERTICAL;
     }
     /** The currently set unit of the ruler. */
-    private RulerDisplayUnits unit = RulerDisplayUnits.Centimeter;
+    private RulerDisplayUnit unit = RulerDisplayUnit.CENTIMETER;
     /** The height of an horizontal ruler, or the width of a vertical, respectively. */
     private int size = 30;
     /** The orientation of the ruler. Can be horizontal or vertical. */
@@ -125,12 +125,12 @@ public class JRuler extends JComponent {
      * @param orientation the direction of the ruler (horizontally or vertically)
      * @param unit the unit that is used to measure the distance
      */
-    public JRuler(RulerOrientation orientation, RulerDisplayUnits unit) {
+    public JRuler(RulerOrientation orientation, RulerDisplayUnit unit) {
         this.orientation = orientation;
         this.unit = unit;
     }
 
-    public RulerDisplayUnits getDisplayUnit() {
+    public RulerDisplayUnit getDisplayUnit() {
         return this.unit;
     }
 
@@ -148,7 +148,7 @@ public class JRuler extends JComponent {
         g.setFont(font);
 
         // Draw border lines
-        if (orientation == RulerOrientation.Horizontal) {
+        if (orientation == RulerOrientation.HORIZONTAL) {
             g.drawLine(drawArea.x, size - 1, drawArea.x + drawArea.width, size - 1);
         } else {
             g.drawLine(size - 1, drawArea.y, size - 1, drawArea.y + drawArea.height);
@@ -186,7 +186,7 @@ public class JRuler extends JComponent {
     }
 
     private double getRulerLength(Rectangle drawArea) {
-        return orientation == RulerOrientation.Horizontal ? drawArea.width : drawArea.height;
+        return orientation == RulerOrientation.HORIZONTAL ? drawArea.width : drawArea.height;
     }
 
     private void drawTicks(Graphics g, int tickCount, double firstTickPosition, int tickOffset,
@@ -207,7 +207,7 @@ public class JRuler extends JComponent {
 
     private void drawTickWithString(Graphics g, int tickLength, int drawPos, String text) {
         if (tickLength != 0) {
-            if (orientation == RulerOrientation.Horizontal) {
+            if (orientation == RulerOrientation.HORIZONTAL) {
                 g.drawLine(drawPos, size - 1, drawPos, size - tickLength - 1);
                 if (text != null) {
                     g.drawString(text, drawPos - 3, 16);
@@ -237,7 +237,7 @@ public class JRuler extends JComponent {
         this.bigScaleStep = scale;
     }
 
-    public void setDisplayUnit(RulerDisplayUnits unit) {
+    public void setDisplayUnit(RulerDisplayUnit unit) {
         this.unit = unit;
     }
 

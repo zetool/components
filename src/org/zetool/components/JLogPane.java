@@ -28,44 +28,44 @@ import javax.swing.JScrollPane;
  */
 public class JLogPane extends JPanel {
 
-	JEditorPane logPane;
-	HTMLLoggerHandler log;
+    JEditorPane logPane;
+    HTMLLoggerHandler log;
 
-	/**
-	 * Creates a new instance of {@code JLogPane}.
-	 * 
-	 * @param log 
-	 */
-	public JLogPane( HTMLLoggerHandler log ) {
-		double size[][] = // Columns
-						{
-			{TableLayout.FILL},
-			//Rows
-			{TableLayout.FILL}
-		};
+    /**
+     * Creates a new instance of {@code JLogPane}.
+     * 
+     * @param log 
+     */
+    public JLogPane( HTMLLoggerHandler log ) {
+        double size[][] = // Columns
+                        {
+            {TableLayout.FILL},
+            //Rows
+            {TableLayout.FILL}
+        };
 
-		setLayout( new TableLayout( size ) );
+        setLayout( new TableLayout( size ) );
 
-		logPane = new JEditorPane( "text/html", "" );
+        logPane = new JEditorPane( "text/html", "" );
 
-		JScrollPane scrollPane = new JScrollPane( logPane );
+        JScrollPane scrollPane = new JScrollPane( logPane );
 
-		add( scrollPane, "0,0" );
-		//this.log = log;
-		log.setLogPane( logPane );
-		//da();
-	}
+        add( scrollPane, "0,0" );
+        //this.log = log;
+        log.setLogPane( logPane );
+        //da();
+    }
 
-//	public synchronized void update() {
-//		final String pre = "<html><font face=\"sans-serif\" size=\"-1\">";
-//		final String post = "</font></html>";
-//		logPane.setText( pre + log.getText() + post );
-//	}
+//    public synchronized void update() {
+//        final String pre = "<html><font face=\"sans-serif\" size=\"-1\">";
+//        final String post = "</font></html>";
+//        logPane.setText( pre + log.getText() + post );
+//    }
 
-	//@Override
-	//public void update( Observable o, Object arg ) {
-	//	update();
-	//}
+    //@Override
+    //public void update( Observable o, Object arg ) {
+    //    update();
+    //}
 
-	
+    
 }

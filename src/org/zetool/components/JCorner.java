@@ -14,10 +14,6 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-/*
- * JCorner.java
- * Created on 14.12.2007, 16:05
- */
 package org.zetool.components;
 
 import java.awt.Color;
@@ -31,31 +27,31 @@ import javax.swing.JComponent;
  */
 public class JCorner extends JComponent {
 
-	/** The color which is used to fill the corner. */
-	Color color;
+    /** The color which is used to fill the corner. */
+    Color color;
 
-	/**
-	 * Initializes a white corner.
-	 */
-	public JCorner() {
-		this( Color.white );
-	}
+    /**
+     * Initializes a white corner.
+     */
+    public JCorner() {
+        this( Color.white );
+    }
 
-	/**
-	 * Initializes a corner with arbitrary color.
-	 * @param color the color of the corner
-	 */
-	public JCorner( Color color ) {
-		this.color = color;
-	}
+    /**
+     * Initializes a corner with arbitrary color.
+     * @param color the color of the corner
+     */
+    public JCorner( Color color ) {
+        this.color = color;
+    }
 
-	/**
-	 * Draws the corner and fills the complete area with the specified color.
-	 * @param g the graphics context
-	 */
-	@Override
-	protected void paintComponent( Graphics g ) {
-		g.setColor( color );
-		g.fillRect( 0, 0, getWidth(), getHeight() );
-	}
+    /**
+     * Draws the corner and fills the complete area with the specified color.
+     * @param g the graphics context
+     */
+    @Override
+    protected void paintComponent( Graphics g ) {
+        g.setColor( color );
+        g.fillRect( 0, 0, getWidth(), getHeight() );
+    }
 }

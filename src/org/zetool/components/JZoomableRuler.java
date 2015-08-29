@@ -18,7 +18,7 @@ package org.zetool.components;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import org.zetool.components.JRuler.RulerDisplayUnits;
+import org.zetool.components.JRuler.RulerDisplayUnit;
 import org.zetool.components.JRuler.RulerOrientation;
 
 /**
@@ -35,7 +35,7 @@ public class JZoomableRuler extends JRuler implements ChangeListener {
      * @param orientation
      * @param unit
      */
-    public JZoomableRuler(RulerOrientation orientation, RulerDisplayUnits unit) {
+    public JZoomableRuler(RulerOrientation orientation, RulerDisplayUnit unit) {
         super(orientation, unit);
     }
 
