@@ -271,6 +271,11 @@ public class JRuler extends JComponent {
         setPreferredWidth((int) Math.ceil(ph * zoomFactor));
     }
 
+
+    double getZoomFactor() {
+        return zoomFactor/1000;
+    }
+    
     /**
      * Sets a specified zoom factor for the ruler. A zoom factor of 1 means that one pixel represents 1 millimeter.
      *
@@ -279,7 +284,7 @@ public class JRuler extends JComponent {
      */
     public void setZoomFactor(double zoomFactor) {
         if (zoomFactor <= 0) {
-            throw new java.lang.IllegalArgumentException("Zoomfactor negative");
+            throw new java.lang.IllegalArgumentException("Zoomfactor negative or zero: " + zoomFactor);
         }
         this.zoomFactor = 1000 * zoomFactor;
     }

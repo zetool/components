@@ -341,6 +341,7 @@ public class Menu {
         }
 
         JMenuItem menuItem = Localizer.instance().registerNewComponent(new JMenuItem(), localizationKey);
+        menuItem.setText(localizationKey);
         m.add(menuItem);
 
         if (commandString != null) {
