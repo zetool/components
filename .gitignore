@@ -12,7 +12,7 @@
 hs_err_pid*
 
 # IDE files
-nbproject/private/
+nbproject/
 
 # build artifacts
 build/
@@ -20,6 +20,3 @@ dist/
 
 # build process
 .sonar/
-
-# libraries
-lib/
