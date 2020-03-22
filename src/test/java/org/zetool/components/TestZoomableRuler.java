@@ -17,8 +17,8 @@ package org.zetool.components;
 
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.number.IsCloseTo.closeTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.closeTo;
 import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
