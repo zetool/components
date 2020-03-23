@@ -93,13 +93,13 @@
             <id>github</id>
             <layout>default</layout>
             <name>GitHub zetool Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/zetool/collection</url>
+            <url>https://maven.pkg.github.com/zetool/components</url>
         </repository>
     </distributionManagement>
 
     <scm>
-        <connection>scm:git:https://github.com/zetool/collection.git</connection>
-        <url>https://github.com/zetool/collection.git</url>
+        <connection>scm:git:https://github.com/zetool/components.git</connection>
+        <url>https://github.com/zetool/components.git</url>
         <tag>HEAD</tag>
     </scm>
 </project>
