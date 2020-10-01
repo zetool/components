@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_PACKAGES_DEPLOY_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GH_PACKAGE_TOKEN }}
 
     steps:
     - name: Checkout source code
@@ -48,4 +48,4 @@ jobs:
         git-release-bot-name: "zetool-bot"
         git-release-bot-email: "github@zetool.org"
 
-        access-token: ${{ secrets.GITHUB_RELEASE_TOKEN }}
+        access-token: ${{ secrets.GH_PACKAGE_DEPLOY_TOKEN }}
