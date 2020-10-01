@@ -42,6 +42,10 @@ jobs:
       with:
         release-branch-name: "master"
 
+        gpg-enabled: "true"
+        gpg-key-id: ${{ secrets.GH_GPG_KEY_ID }}
+        gpg-key: ${{ secrets.GH_GPG_KEY }}
+
         settings-file: "./settings.xml"
 
         maven-args: "-X -Dmaven.javadoc.skip=true -DskipTests"
